@@ -36,7 +36,7 @@ The following software must be installed in your local environment:
 ## Part 1: Building Rental monolith
 
 The workshop consists of a number of exercises to be completed in sequence, thus building the `rental` app and
-connecting it's process to the `payment` application, which has already been built.
+connecting its process to the `payment` application, which has already been built.
 
 In this exercise, the command model of the `rental` boundary context will be implemented.
 
@@ -62,7 +62,8 @@ a `BikeRegisteredEvent` to be published as a result.
 * Publish a `BikeRegisteredEvent` in the command handling constructor via the statically imported `apply` function.
 
 * Create an _event sourcing handler_ that accepts `BikeRegisteredEvent` and performs the actual state change; in this
-  case, setting the aggregate's identifier.
+  case, setting the aggregate's identifier. An event sourcing handler is a method (choose any name) that is annotated
+  with the `@EventSourcingHandler` annotation.
 
 > For more information on implementing aggregates,
 > see [here](https://docs.axoniq.io/reference-guide/v/4.6/axon-framework/axon-framework-commands/modeling/aggregate).
@@ -127,7 +128,8 @@ queries:
   `queryGateway.query("findOne", bikeId, BikeStatus.class);`
 
 > View
-> the [JavaDoc](https://apidocs.axoniq.io/latest/org/axonframework/queryhandling/QueryGateway.html#query-java.lang.String-Q-org.axonframework.messaging.responsetypes.ResponseType-)
+>
+the [JavaDoc](https://apidocs.axoniq.io/latest/org/axonframework/queryhandling/QueryGateway.html#query-java.lang.String-Q-org.axonframework.messaging.responsetypes.ResponseType-)
 > for sending queries.
 
 #### Running the Application with Axon Server
@@ -246,6 +248,9 @@ and queries are balanced between nodes.
 
 ## When you're done
 
-Congratulations! You've implemented the core concepts. But there is a whole lot more to explore. In these labs, we've only covered the basics of the functional components of Axon Framework. There are a lot of non-functional configuration items hidden in this application.
+Congratulations! You've implemented the core concepts. But there is a lot more to explore. In these labs, we've
+only covered the basics of the functional components of Axon Framework. There are a lot of non-functional configuration
+items hidden in this application.
 
-You can take a look at the [Bike Rental Demo application](https://github.com/abuijze/bike-rental-extended) on GitHub fur the full implementation, including deadlines and subscription queries.
+You can take a look at the [Bike Rental Demo application](https://github.com/abuijze/bike-rental-extended) on GitHub fur
+the full implementation, including deadlines and subscription queries.

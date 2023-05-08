@@ -7,11 +7,9 @@ import org.springframework.stereotype.Component;
 public class BikeStatusProjection {
 
     private final BikeStatusRepository bikeStatusRepository;
-    private final QueryUpdateEmitter updateEmitter;
 
-    public BikeStatusProjection(BikeStatusRepository bikeStatusRepository, QueryUpdateEmitter updateEmitter) {
+    public BikeStatusProjection(BikeStatusRepository bikeStatusRepository) {
         this.bikeStatusRepository = bikeStatusRepository;
-        this.updateEmitter = updateEmitter;
     }
 
     // TODO Implement relevant Query and Event Handlers
