@@ -76,10 +76,14 @@ The remaining unit tests cover the other commands and events related to `Bike`.
 
 Implement the required Command Handlers and Event Sourcing handlers to make all the tests pass.
 
-Note that unlike in the first exercise, handlers that should act on an existing aggregate should be regular methods,
-rather than a constructor.
+> Note
+> 
+> Unlike in the first exercise, these handlers should act on an existing aggregate instance, rather than creating
+> a new one. Therefore, create a regular instance method (the ones with a name and return value) instead of a constructor.
+> The best practice is to use `void` as return type, unless you explicitly expect to return a value from the command's
+> execution.
 
-Also note that the RequestBikeCommand expects a return value. This is the "rental reference", which must be a unique
+Note that the `RequestBikeCommand` expects a return value. This is the "rental reference", which must be a unique
 value to be able to refer to a specific attempt to rent a bike. This reference will later be used to link this request
 to the payments. You should return the same value that is also used in the `BikeRequestedEvent`.
 
