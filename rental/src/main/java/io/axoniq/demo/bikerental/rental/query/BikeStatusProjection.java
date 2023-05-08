@@ -1,6 +1,5 @@
 package io.axoniq.demo.bikerental.rental.query;
 
-import org.axonframework.queryhandling.QueryUpdateEmitter;
 import org.springframework.stereotype.Component;
 
 @Component

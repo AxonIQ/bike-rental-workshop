@@ -33,7 +33,3 @@ Accept: application/json
 ### Return bike
 POST {{rental}}/returnBike?location=New York&bikeId=40208d8f-f338-4ba3-835e-b5026e6bde3e
 Accept: application/json
-
-### Generate rentals
-POST {{rental}}/generateRentals?bikeType=city&loops=30&concurrency=10
-Accept: text/plain

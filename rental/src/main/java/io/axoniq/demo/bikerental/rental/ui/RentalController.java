@@ -1,29 +1,18 @@
 package io.axoniq.demo.bikerental.rental.ui;
 
-import io.axoniq.demo.bikerental.coreapi.payment.ConfirmPaymentCommand;
-import io.axoniq.demo.bikerental.coreapi.payment.PaymentStatus;
 import io.axoniq.demo.bikerental.coreapi.rental.BikeStatus;
 import io.axoniq.demo.bikerental.coreapi.rental.RegisterBikeCommand;
-import io.axoniq.demo.bikerental.coreapi.rental.RentalStatus;
-import io.axoniq.demo.bikerental.coreapi.rental.RequestBikeCommand;
-import io.axoniq.demo.bikerental.coreapi.rental.ReturnBikeCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
-import org.axonframework.queryhandling.SubscriptionQueryResult;
-import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
@@ -32,9 +21,9 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("/")
 public class RentalController {
 
-    private static final List<String> LOCATIONS = Arrays.asList("Amsterdam", "Paris", "Vilnius", "Barcelona", "London", "New York", "Toronto", "Berlin", "Milan", "Rome", "Belgrade");
     public static final String FIND_ALL_QUERY = "findAll";
     public static final String FIND_ONE_QUERY = "findOne";
+    private static final List<String> LOCATIONS = Arrays.asList("Amsterdam", "Paris", "Vilnius", "Barcelona", "London", "New York", "Toronto", "Berlin", "Milan", "Rome", "Belgrade");
     private final CommandGateway commandGateway;
     private final QueryGateway queryGateway;
 
