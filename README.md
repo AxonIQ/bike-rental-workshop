@@ -24,7 +24,7 @@ The following software must be installed in your local environment:
 
     * To run Axon Server using Docker:
 
-          docker run -d --name axonserver -p 8024:8024 -p 8124:8124 -e AXONIQ_AXONSERVER_DEVMODE_ENABLED=true axoniq/axonserver`
+          docker run -d --name axonserver -p 8024:8024 -p 8124:8124 -e AXONIQ_AXONSERVER_DEVMODE_ENABLED=true axoniq/axonserver
 
       You can then start and stop Axon Server respectively by running:
 
