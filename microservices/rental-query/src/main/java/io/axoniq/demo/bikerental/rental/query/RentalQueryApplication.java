@@ -1,5 +1,6 @@
 package io.axoniq.demo.bikerental.rental.query;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
 import io.axoniq.demo.bikerental.coreapi.rental.BikeStatus;
 import org.axonframework.config.EventProcessingConfigurer;
@@ -27,8 +28,9 @@ public class RentalQueryApplication {
 	}
 
 	@Autowired
-	public void configureXStreamSecurity(XStream xStream) {
+	public void configureSerializers(XStream xStream, ObjectMapper objectMapper) {
 		xStream.allowTypesByWildcard(new String[]{"io.axoniq.demo.bikerental.coreapi.**"});
+		objectMapper.activateDefaultTyping(objectMapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT);
 	}
 
 	@Autowired
