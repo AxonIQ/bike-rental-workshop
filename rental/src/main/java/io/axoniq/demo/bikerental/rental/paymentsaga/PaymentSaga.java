@@ -38,10 +38,10 @@ public class PaymentSaga {
     @StartSaga
     @SagaEventHandler(associationProperty = "bikeId")
     public void on(BikeRequestedEvent event) {
-        this.bikeId = event.getBikeId();
-        this.renter = event.getRenter();
-        SagaLifecycle.associateWith("paymentReference", event.getRentalReference());
-        preparePayment(event.getRentalReference());
+        this.bikeId = event.bikeId();
+        this.renter = event.renter();
+        SagaLifecycle.associateWith("paymentReference", event.rentalReference());
+        preparePayment(event.rentalReference());
     }
 
     @EndSaga
@@ -65,7 +65,7 @@ public class PaymentSaga {
 
     @SagaEventHandler(associationProperty = "paymentReference")
     public void on(PaymentPreparedEvent event) {
-        deadlineManager.schedule(Duration.ofSeconds(30), "cancelPayment", event.getPaymentId());
+        deadlineManager.schedule(Duration.ofSeconds(30), "cancelPayment", event.paymentId());
     }
 
     @DeadlineHandler(deadlineName = "cancelPayment")
