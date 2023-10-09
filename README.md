@@ -7,16 +7,17 @@ with [Axon Framework and Axon Server](https://developer.axoniq.io/).
 
 The following software must be installed in your local environment:
 
-* JDK version 11 (or higher).
+* JDK version 17 (or higher).
 
 * Axon Server, which is available to download as a standalone JAR file or as a Docker Image.
 
     * To install as a Jar file:
 
       First, [Download Axon Server](https://developer.axoniq.io/download). In the Axon Server directory, next
-      to `AxonServer.jar`, create a file called `axonserver.properties` and add the following line:
+      to `AxonServer.jar`, create a file called `axonserver.properties` and add the following lines:
 
           axoniq.axonserver.devmode.enabled=true
+          axoniq.axonserver.standalone=true
 
       Run Axon Server (@ `localhost:8024`):
 
@@ -24,7 +25,7 @@ The following software must be installed in your local environment:
 
     * To run Axon Server using Docker:
 
-          docker run -d --name axonserver -p 8024:8024 -p 8124:8124 -e AXONIQ_AXONSERVER_DEVMODE_ENABLED=true axoniq/axonserver
+          docker run -d --name axonserver -p 8024:8024 -p 8124:8124 -e AXONIQ_AXONSERVER_DEVMODE_ENABLED=true -e AXONIQ_AXONSERVER_STANDALONE=true axoniq/axonserver
 
       You can then start and stop Axon Server respectively by running:
 
