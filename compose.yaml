@@ -1,0 +1,10 @@
+services:
+  postgres-1:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.pg-init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=superSecret
+      - POSTGRES_MULTIPLE_DATABASES=rental,payment

@@ -6,6 +6,7 @@ import io.axoniq.demo.bikerental.coreapi.payment.PaymentStatus;
 import org.axonframework.config.Configuration;
 import org.axonframework.config.EventProcessingConfigurer;
 import org.axonframework.eventhandling.tokenstore.jpa.TokenEntry;
+import org.axonframework.eventsourcing.eventstore.jpa.DomainEventEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-@EntityScan(basePackageClasses = {PaymentStatus.class, TokenEntry.class})
+@EntityScan(basePackageClasses = {PaymentStatus.class, DomainEventEntry.class, TokenEntry.class})
 @SpringBootApplication
 public class PaymentApplication {
 
@@ -29,8 +30,7 @@ public class PaymentApplication {
 	}
 
 	@Autowired
-	public void configureSerializers(XStream xStream, ObjectMapper objectMapper) {
-		xStream.allowTypesByWildcard(new String[]{"io.axoniq.demo.bikerental.coreapi.**"});
+	public void configureSerializers(ObjectMapper objectMapper) {
 		objectMapper.activateDefaultTyping(objectMapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT);
 	}
 
