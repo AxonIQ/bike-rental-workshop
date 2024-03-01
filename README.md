@@ -120,13 +120,7 @@ queries:
 the [JavaDoc](https://apidocs.axoniq.io/latest/org/axonframework/queryhandling/QueryGateway.html#query-java.lang.String-Q-org.axonframework.messaging.responsetypes.ResponseType-)
 > for sending queries.
 
-#### Running the Application with Axon Server
-
-Open your web browser and navigate to `localhost:8024` for the Administrator UI.
-
-Start the Bike application; you will see the application connected to Axon Server in the _Overview_ section.
-
-Perform the following tasks and inspect the _Search_ (for events), _Commands_ and _Queries_ sections:
+Perform the following tasks and inspect the Rental.domain_event_entry table to see the resulting events:
 
 The requests to send are available in the `requests.http` file. You may have to change the parameter values for each
 request.
@@ -139,8 +133,7 @@ request.
 
 * Get the status of the requested bike. It should show that it has been requested.
 
-Close the Bike application; reset the event store in the _Settings_ section and remove the `*.db` files that have been
-created by H2 in the project's main directory.
+Close the Rental application; delete all data in in Rental database by running .
 
 ### Exercise 3: Connecting the Payment processing
 
@@ -165,7 +158,7 @@ Implement the process as follows:
 
         SagaLifecycle.associatedWith("paymentId", paymentId)
 
-  Send a `PreparePaymentCommand` via the `CommandGateway`. THe handler for this command is implemented in the Payment
+  Send a `PreparePaymentCommand` via the `CommandGateway`. The handler for this command is implemented in the Payment
   Application.
 
 * Annotate a member function that accepts a `PaymentConfirmedEvent` with
