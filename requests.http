@@ -11,15 +11,15 @@ GET {{rental}}/bikes/40208d8f-f338-4ba3-835e-b5026e6bde3e
 Accept: application/json
 
 ### Request Bike
-POST {{rental}}/requestBike?renter=BikeRider&bikeId=ca78f8d5-86a6-4822-9db1-c757360ce8ce
+POST {{rental}}/requestBike?renter=BikeRider&bikeId=a15032a4-2986-426d-bff7-b20ad2e96227
 Accept: application/json
 
 ### Find payment ID
-GET {{payment}}/findPayment?reference=ef6fdaa6-9be3-45a0-ab86-efcde226aea7
+GET {{payment}}/findPayment?reference=9f667d2a-63dd-490c-a564-9d9f3a926f1d
 Accept: application/json
 
 ### Accept payment
-POST {{payment}}/acceptPayment?id=c5394643-cde7-4059-abf9-1d9c1389ad53
+POST {{payment}}/acceptPayment?id=b62374db-248f-4629-8ecf-2a519a2b3d50
 Accept: application/json
 
 ### Reject payment
@@ -31,5 +31,5 @@ GET {{rental}}/bikes/91480d9a-20e3-43a7-a88f-8712365a4f4c
 Accept: application/json
 
 ### Return bike
-POST {{rental}}/returnBike?location=New York&bikeId=40208d8f-f338-4ba3-835e-b5026e6bde3e
+POST {{rental}}/returnBike?location=New York&bikeId=a15032a4-2986-426d-bff7-b20ad2e96227
 Accept: application/json
