@@ -2,10 +2,7 @@ package io.axoniq.demo.bikerental.rental.ui;
 
 import io.axoniq.demo.bikerental.coreapi.rental.BikeStatus;
 import io.axoniq.demo.bikerental.coreapi.rental.RegisterBikeCommand;
-import io.axoniq.demo.bikerental.coreapi.rental.RequestBikeCommand;
-import io.axoniq.demo.bikerental.coreapi.rental.ReturnBikeCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,22 +45,26 @@ public class RentalController {
 
     @PostMapping("/requestBike")
     public CompletableFuture<String> requestBike(@RequestParam("bikeId") String bikeId, @RequestParam("renter") String renter) {
-        return commandGateway.send(new RequestBikeCommand(bikeId, renter)).thenApply(s -> {return "rentalReference " + s; });
+        // TODO Implement
+        return null;
     }
 
     @PostMapping("/returnBike")
     public CompletableFuture<String> returnBike(@RequestParam("bikeId") String bikeId, @RequestParam("location") String location) {
-        return commandGateway.send(new ReturnBikeCommand(bikeId, location != null ? location : randomLocation()));
+        // TODO Implement
+        return null;
     }
 
     @GetMapping("/bikes")
     public CompletableFuture<List<BikeStatus>> findAll() {
-        return queryGateway.query(FIND_ALL_QUERY, null, ResponseTypes.multipleInstancesOf(BikeStatus.class));
+        // TODO Implement
+        return null;
     }
 
     @GetMapping("/bikes/{bikeId}")
     public CompletableFuture<BikeStatus> findStatus(@PathVariable("bikeId") String bikeId) {
-        return queryGateway.query(FIND_ONE_QUERY, bikeId, BikeStatus.class);
+        // TODO Implement
+        return null;
     }
 
     private String randomLocation() {
