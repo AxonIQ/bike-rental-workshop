@@ -48,7 +48,7 @@ public class RentalController {
 
     @PostMapping("/requestBike")
     public CompletableFuture<String> requestBike(@RequestParam("bikeId") String bikeId, @RequestParam("renter") String renter) {
-        return commandGateway.send(new RequestBikeCommand(bikeId, renter));
+        return commandGateway.send(new RequestBikeCommand(bikeId, renter)).thenApply(s -> {return "rentalReference " + s; });
     }
 
     @PostMapping("/returnBike")

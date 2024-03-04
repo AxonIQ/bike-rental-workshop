@@ -19,8 +19,8 @@ Starting Postgres Server
 
 ## Part 1: Building Rental monolith
 
-The workshop consists of a number of exercises to be completed in sequence, thus building the `rental` app and
-connecting its process to the `payment` application, which has already been built.
+The workshop consists of a number of exercises to be completed in sequence, thus building the `rental` module and
+connecting its process to the `payment` module, which has already been built.
 
 In this exercise, the command model of the `rental` boundary context will be implemented.
 
@@ -138,7 +138,7 @@ Close the Rental application; delete all data in in Rental database by running .
 ### Exercise 3: Connecting the Payment processing
 
 In order to successfully rent a bike, a payment must be made before the bike request is approved. Since this is a
-transaction that spans both `rental` and `payment` contexts, a _process_ (also called _saga_) must be initiated.
+transaction that spans both `rental` and `payment` modules, a _process_ (also called _saga_) must be initiated.
 
 The payment process is implemented in `PaymentSaga`; it starts and ends upon receiving a `BikeRequestedEvent`
 and `PaymentConfirmedEvent` respectively.
@@ -172,11 +172,9 @@ Implement the process as follows:
 
 > Why didn't we need a "prepare payment" endpoint in `PaymentController`?
 
-#### Running the Application with Axon Server
+#### Running the Application
 
-> If Axon Server is not currently running, start it again. Make sure to reset the event store.
-
-Start both the `RentalApplication` and the `PaymentApplication`
+Start  the `RentalApplication`
 
 Perform the following tasks and inspect the _Search_ (for events), _Commands_ and _Queries_ sections:
 
@@ -195,43 +193,11 @@ request.
 
 * Return the bike in a new location
 
-## Part 2: Scaling out
-
-Our monolith now consists of 4 different components, all within the same application:
-
-* Command component (the `Bike`)
-* Query Handlers (the `BikeStatusProjection` and `BikeStatusRepository`)
-* Payment coordination (the `PaymentSaga`)
-* UI Controller (the `RentalController`)
-
-Let's move each of those classes to their own module. These modules have already been prepared under
-the `/microservices` folder in the project.
-
-Move all the classes mentioned above to their respective modules. Note that the package names remain the same. Using
-the "move" function of IntelliJ allows you to simply choose a different source root in the dropdown in the lower part of
-the "move" window.
-
-Once moved, start each application:
-
-* `RentalCommandApplication`
-* `RentalQueryApplication`
-* `UserInterfaceApplication`
-* `RentalPaymentSagaApplication`
-* `PaymentApplication`
-
-Check the Axon Server UI to make sure all applications are started.
-
-Go through the rental process again to validate that everything still works.
-
-Try starting a few extra instances of the microservices. Note that the `UserInterfaceApplication` binds to port 8080, so
-you can only start one instance. Check the `Commands` and `Queries` screens on the Axon Server UI to see how commands
-and queries are balanced between nodes.
-
 ## When you're done
 
 Congratulations! You've implemented the core concepts. But there is a lot more to explore. In these labs, we've
 only covered the basics of the functional components of Axon Framework. There are a lot of non-functional configuration
 items hidden in this application.
 
-You can take a look at the [Bike Rental Demo application](https://github.com/abuijze/bike-rental-extended) on GitHub fur
-the full implementation, including deadlines and subscription queries.
+You can take a look at the [postgres-singleapp-solution branch](https://github.com/AxonIQ/bike-rental-workshop/tree/postgres-singleapp-solution) for
+the full implementation, including deadlines.
