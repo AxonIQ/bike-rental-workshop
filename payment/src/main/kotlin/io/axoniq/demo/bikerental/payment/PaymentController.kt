@@ -34,8 +34,5 @@ class PaymentController(
 
     @GetMapping("/status")
     fun getStatus(@RequestParam(required = false) status: PaymentStatus.Status?): CompletableFuture<List<PaymentStatus>> =
-        when (status) {
-            null -> queryGateway.queryMany("getAllPayments")
-            else -> queryGateway.queryMany("getAllPayments", status)
-        }
+        queryGateway.queryMany(status?.let { GetPaymentsByStatus(status) } ?: GetAllPayments)
 }

@@ -29,12 +29,12 @@ class PaymentStatusProjection(
             .map(PaymentStatus::id)
             .orElse(null)
 
-    @QueryHandler(queryName = "getAllPayments")
-    fun findByStatus(status: PaymentStatus.Status): Iterable<PaymentStatus> =
-        paymentStatusRepository.findAllByStatus(status)
+    @QueryHandler
+    fun findByStatus(query: GetPaymentsByStatus): Iterable<PaymentStatus> =
+        paymentStatusRepository.findAllByStatus(query.status)
 
-    @QueryHandler(queryName = "getAllPayments")
-    fun findAll(): Iterable<PaymentStatus> =
+    @QueryHandler
+    fun findAll(query: GetAllPayments): Iterable<PaymentStatus> =
         paymentStatusRepository.findAll()
 
     @EventHandler
@@ -59,3 +59,6 @@ class PaymentStatusProjection(
             .ifPresent { paymentStatusRepository.save(it) }
     }
 }
+
+object GetAllPayments
+data class GetPaymentsByStatus(val status: PaymentStatus.Status)
