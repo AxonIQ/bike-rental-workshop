@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.4</version>
+		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.axoniq.demo.bikerental</groupId>
@@ -29,7 +29,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<java.version>17</java.version>
-		<axon.version>4.8.2</axon.version>
+		<axon.version>4.9.3</axon.version>
 	</properties>
 
 	<dependencies>
@@ -46,6 +46,11 @@
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-micrometer</artifactId>
 			<version>${axon.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.axoniq.console</groupId>
+			<artifactId>console-framework-client-spring-boot-starter</artifactId>
+			<version>1.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
