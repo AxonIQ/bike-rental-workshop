@@ -78,9 +78,10 @@ The remaining unit tests cover the other commands and events related to `Bike`.
 Implement the required Command Handlers and Event Sourcing handlers to make all the tests pass.
 
 > Note
-> 
+>
 > Unlike in the first exercise, these handlers should act on an existing aggregate instance, rather than creating
-> a new one. Therefore, create a regular instance method (the ones with a name and return value) instead of a constructor.
+> a new one. Therefore, create a regular instance method (the ones with a name and return value) instead of a
+> constructor.
 > The best practice is to use `void` as return type, unless you explicitly expect to return a value from the command's
 > execution.
 
@@ -107,6 +108,18 @@ A `BikeStatusProjection` class exists that needs the following:
 
   > Don't confuse `@EventHandler` with `@EventSourcingHandler`! The latter only exists on the command-side.
 
+  Define an Event Handler method for each of the events you need to process. Put the event's type as the first
+  parameter. Generally, you won't need other parameters.
+
+  For example::
+
+  ```
+  @EventHandler
+  public void handle(BikeRegisteredEvent event) {
+     // event handling logic here
+  }
+  ```
+
   `BikeStatusRepository` offers methods for persisting (`save`) and retrieving instances (`findById`, `findAll`)
   of `BikeStatus`.
 
@@ -119,7 +132,17 @@ A `BikeStatusProjection` class exists that needs the following:
   >       )`
 
 * Query handlers are annotated with `@QueryHandler(queryName = "someQuery")` and use `BikeStatusRepository` to retrieve
-  and return results (that conform to what is expected in `BikeController`).
+  and return results (that conform to what is expected in `BikeController`). Define a Query Handler method for each of
+  the queries you need to provide. Put the query's payload type as the first parameter. Generally, you won't need other
+  parameters.
+
+  For example::
+  ```
+  @EventHandler
+  public void handle(BikeRegisteredEvent event) {
+     // event handling logic here
+  }
+  ```
 
 In the `RentalController`, implement the (GET) `/bikes` and `/bikes/{bikeId}` endpoints by sending the corresponding
 queries:
