@@ -138,9 +138,9 @@ A `BikeStatusProjection` class exists that needs the following:
 
   For example::
   ```
-  @EventHandler
-  public void handle(BikeRegisteredEvent event) {
-     // event handling logic here
+  @QueryHandler(queryName="myQueryName")
+  public QueryResponse handle(MyQuery event) {
+     // query handling logic here
   }
   ```
 
