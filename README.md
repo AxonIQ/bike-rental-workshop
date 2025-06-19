@@ -67,7 +67,7 @@ a `BikeRegisteredEvent` to be published as a result.
   with the `@EventSourcingHandler` annotation.
 
 > For more information on implementing aggregates,
-> see [here](https://docs.axoniq.io/reference-guide/v/4.6/axon-framework/axon-framework-commands/modeling/aggregate).
+> see [here](https://docs.axoniq.io/axon-framework-reference/4.11/axon-framework-commands/modeling/aggregate/).
 
 Run the test to confirm that you've created the constructor properly.
 
