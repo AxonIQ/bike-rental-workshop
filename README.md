@@ -201,7 +201,7 @@ Implement the process as follows:
 
   Store the bike ID as process state (simply a member field, which will be used later).
 
-  Associated the payment reference with the saga instance using:
+  Associated the rental reference with the saga instance using, as this will be need to correlate the payment event later:
 
         SagaLifecycle.associateWith("paymentReference", event.rentalReference());
 
