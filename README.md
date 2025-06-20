@@ -208,12 +208,12 @@ Implement the process as follows:
   Send a `PreparePaymentCommand` via the `CommandGateway`. THe handler for this command is implemented in the Payment
   Application.
 
-  * Annotate a member function that accepts a `PaymentConfirmedEvent` with
+* Annotate a member function that accepts a `PaymentConfirmedEvent` with
 
-          @EndSaga
-          @SagaEventHandler(associationProperty = "paymentReference")
+        @EndSaga
+        @SagaEventHandler(associationProperty = "paymentReference")
 
-    Send a `ApproveRequestCommand`.
+  Send a `ApproveRequestCommand`.
 
 > Why can't the `@EndSaga` event handler be associated with `bikeId`?
 
