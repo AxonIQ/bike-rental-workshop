@@ -195,25 +195,25 @@ Implement the process as follows:
 * Annotate a member function that accepts a `BikeRequestedEvent` with
 
         @StartSaga
-        @SagaEventHandler(associationId = "bikeId")
+        @SagaEventHandler(associationProperty = "bikeId")
 
 * In this event handler:
 
   Store the bike ID as process state (simply a member field, which will be used later).
 
-  Generate a new payment ID (for example using `UUID.randomUUID.toString()`) and associated it with the process via:
+  Associated the rental reference with the saga instance as follows:
 
-        SagaLifecycle.associatedWith("paymentId", paymentId)
-
+        SagaLifecycle.associateWith("paymentReference", event.rentalReference());
+  
   Send a `PreparePaymentCommand` via the `CommandGateway`. THe handler for this command is implemented in the Payment
   Application.
 
 * Annotate a member function that accepts a `PaymentConfirmedEvent` with
 
         @EndSaga
-        @SagaEventHandler(associationId = "paymentId")
+        @SagaEventHandler(associationProperty = "paymentReference")
 
-  Send a `ApproveBikeRequestCommand`.
+  Send a `ApproveRequestCommand`.
 
 > Why can't the `@EndSaga` event handler be associated with `bikeId`?
 
